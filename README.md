@@ -1,2 +1,2 @@
 # GeographicPuzzleGame
- A 2.5d simple puzzle game based on Geographic locations
+ A 3D (previously 2.5D) simple puzzle game based on Geographic locations
