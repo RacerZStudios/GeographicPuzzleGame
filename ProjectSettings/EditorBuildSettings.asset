@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Menu.unity
+    path: Assets/_Geographic_Puzzle_Master_Contents/Master_Scenes/Menu.unity
     guid: 1e92f375d1d78314eaeef044b81f78d0
   - enabled: 1
-    path: Assets/A.unity
+    path: Assets/_Geographic_Puzzle_Master_Contents/Master_Scenes/A.unity
     guid: 25eac1d0635d5a248b1b46284784746e
   m_configObjects: {}
