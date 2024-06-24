@@ -7,6 +7,7 @@ public class EnemyConflict : MonoBehaviour
 {
     [SerializeField] private GameObject target;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private PlayerHealth playerHealth; 
 
     private void Start()
     {
@@ -30,6 +31,17 @@ public class EnemyConflict : MonoBehaviour
 
             agent.transform.position = gameObject.transform.position;
             return; 
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision != null)
+        { 
+            if(collision.gameObject.activeInHierarchy && collision.gameObject.CompareTag("Player"))
+            {
+                playerHealth.Health();
+            }
         }
     }
 }
