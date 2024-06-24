@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
-using UnityEngine.Video;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,7 +29,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(!facingRight)
+        {
+            facingRight = true;
+        }
     }
 
     // Update is called once per frame
