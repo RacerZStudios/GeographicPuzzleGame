@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,8 +8,24 @@ public class EnemyConflict : MonoBehaviour
 {
     [SerializeField] private GameObject target;
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private PlayerHealth playerHealth; 
+    [SerializeField] private PlayerHealth playerHealth;
 
+    private void Awake()
+    {
+        if(target == null)
+        {
+            target = GameObject.Find("Player");
+            target = GetComponent<GameObject>();
+            return; 
+        }
+
+        if(playerHealth == null)
+        {
+            playerHealth = FindObjectOfType<PlayerHealth>();
+            playerHealth = GetComponent<PlayerHealth>();
+            return; 
+        }
+    }
     private void Start()
     {
         if(target == null)
@@ -20,6 +37,15 @@ public class EnemyConflict : MonoBehaviour
 
     private void Update()
     {
+        if(target == null || playerHealth == null)
+        {
+            target = FindObjectOfType<GameObject>();
+            playerHealth = FindObjectOfType<PlayerHealth>(); 
+        }
+        else if(!target.activeInHierarchy || !playerHealth)
+        {
+            return; 
+        }
         if(target != null && target.gameObject.activeInHierarchy)
         {
             agent.SetDestination(target.gameObject.transform.position);
@@ -41,6 +67,7 @@ public class EnemyConflict : MonoBehaviour
             if(collision.gameObject.activeInHierarchy && collision.gameObject.CompareTag("Player"))
             {
                 playerHealth.Health();
+                return; 
             }
         }
     }
