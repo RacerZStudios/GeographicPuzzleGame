@@ -9,7 +9,7 @@ public class CollectedLetterManager : MonoBehaviour
     [SerializeField] private string A; 
     [SerializeField] private GameObject canvas; 
     [SerializeField] private GameObject RockText;
-    [SerializeField] private GameObject AText; // not working ? 
+    [SerializeField] private GameObject AText; 
     [SerializeField] private bool ALetter = true;
 
     private void Awake()
@@ -52,7 +52,7 @@ public class CollectedLetterManager : MonoBehaviour
             }
             // Letter A has been found
             print("Letter A discovered");
-            print(RockText + "Enter"); // should be off here 
+            print(RockText + "Enter"); 
             return; 
         }
     }
