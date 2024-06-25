@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro; 
 using UnityEngine;
 
 public class CollectedLetterManager : MonoBehaviour
 {
+    [Header("Region A")]
+    [SerializeField] private string A; 
     [SerializeField] private GameObject canvas; 
     [SerializeField] private GameObject RockText;
-    [SerializeField] private GameObject AText;
+    [SerializeField] private GameObject AText; // not working ? 
     [SerializeField] private bool ALetter = true;
 
     private void Awake()
@@ -21,7 +24,7 @@ public class CollectedLetterManager : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start()
     {
         if (canvas == null)
         {
@@ -44,23 +47,12 @@ public class CollectedLetterManager : MonoBehaviour
         {
             if(ALetter != false)
             {
-                ALetter = false; 
+                ALetter = false;
+                print(ALetter); 
             }
             // Letter A has been found
             print("Letter A discovered");
             print(RockText + "Enter"); // should be off here 
-            if (AText == null)
-            {
-                AText = FindObjectOfType<GameObject>();
-                AText.SetActive(true);
-                return;
-            }
-            print(AText);
-            if(ALetter == false)
-            {
-                AText.SetActive(true);
-                return; 
-            }
             return; 
         }
     }
@@ -73,7 +65,11 @@ public class CollectedLetterManager : MonoBehaviour
             print(canvas); 
             RockText.SetActive(false);
             print(RockText + "Exit");
-   
+            if (AText == null || ALetter == false)
+            {
+                GameObject.Find("ArizonaText").GetComponent<TextMeshProUGUI>().enabled = true; 
+                print(AText);
+            }
             Destroy(gameObject, 3);
         }
     }
