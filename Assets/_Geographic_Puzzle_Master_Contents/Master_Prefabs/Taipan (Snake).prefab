@@ -806,6 +806,7 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 698524626706021874}
   playerHealth: {fileID: 0}
+  enemyHealth: 5
 --- !u!1 &9006678169589729107
 GameObject:
   m_ObjectHideFlags: 0

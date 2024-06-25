@@ -8,6 +8,7 @@ public class EnemyConflict : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private int enemyHealth; 
 
     private void Awake()
     {
@@ -67,6 +68,17 @@ public class EnemyConflict : MonoBehaviour
             {
                 playerHealth.Health();
                 return; 
+            }
+        }
+
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Push"))
+        {
+            enemyHealth--;
+
+            if (enemyHealth <= 0)
+            {
+                // set dead animation 
+                Destroy(gameObject);
             }
         }
     }
