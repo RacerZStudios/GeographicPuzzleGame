@@ -8,7 +8,10 @@ public class EnemyConflict : MonoBehaviour
     [SerializeField] private GameObject target;
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private PlayerHealth playerHealth;
-    [SerializeField] private int enemyHealth; 
+    [SerializeField] private int enemyHealth;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip audioClip; // attack audio
+    [SerializeField] private AudioClip audioClip2; // player hurt audio 
 
     private void Awake()
     {
@@ -62,23 +65,28 @@ public class EnemyConflict : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision != null)
-        { 
-            if(collision.gameObject.activeInHierarchy && collision.gameObject.CompareTag("Player"))
-            {
-                playerHealth.Health();
-                return; 
-            }
-        }
-
         if(collision.gameObject.layer == LayerMask.NameToLayer("Push"))
         {
             enemyHealth--;
-
+            audioSource.PlayOneShot(audioClip);
             if (enemyHealth <= 0)
             {
                 // set dead animation 
                 Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision != null)
+        {
+            if (collision.gameObject.activeInHierarchy && collision.gameObject.CompareTag("Player"))
+            {
+                // play hurt audioClip 
+                audioSource.PlayOneShot(audioClip2);
+                playerHealth.Health();
+                return;
             }
         }
     }
