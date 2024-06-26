@@ -5,7 +5,9 @@ using UnityEngine.UIElements;
 
 public class LevelStart : MonoBehaviour
 {
-    [SerializeField] private GameObject player; 
+    [SerializeField] private GameObject player;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip audioClip; 
     private void StartLevel()
     {
         player.SetActive(true);
@@ -13,6 +15,7 @@ public class LevelStart : MonoBehaviour
 
     private void EndSelect()
     {
+        audioSource.PlayOneShot(audioClip);
         gameObject.SetActive(false); 
     }
 }

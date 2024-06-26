@@ -10,7 +10,7 @@ public class CollectedLetterManager : MonoBehaviour
     [SerializeField] private GameObject canvas; 
     [SerializeField] private GameObject RockText;
     [SerializeField] private GameObject AText; 
-    [SerializeField] private bool ALetter = true;
+    [SerializeField] public bool ALetter = true;
 
     private void Awake()
     {
@@ -70,7 +70,7 @@ public class CollectedLetterManager : MonoBehaviour
                 GameObject.Find("ArizonaText").GetComponent<TextMeshProUGUI>().enabled = true; 
                 print(AText);
             }
-            Destroy(gameObject, 3);
+           gameObject.SetActive(false);
         }
     }
 }
