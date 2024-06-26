@@ -6319,8 +6319,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32e32cab5059d354c9e288e0dca6d3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AText: {fileID: 0}
-  A: 0
+  AText: {fileID: 170504323649110074, guid: 7af12be466840574e975d9d62e4b7f12, type: 3}
+  aTextActive: {fileID: 0}
 --- !u!1 &1880944164
 GameObject:
   m_ObjectHideFlags: 0
@@ -7606,6 +7606,10 @@ PrefabInstance:
       propertyPath: letterAActive
       value: 
       objectReference: {fileID: 170504323649110074, guid: 7af12be466840574e975d9d62e4b7f12, type: 3}
+    - target: {fileID: 245290638734368877, guid: 18f8a39a0147aec42aa58995373db01e, type: 3}
+      propertyPath: riddleManager
+      value: 
+      objectReference: {fileID: 1820883098}
     - target: {fileID: 245290638734368877, guid: 18f8a39a0147aec42aa58995373db01e, type: 3}
       propertyPath: CompletePuzzleA
       value: 

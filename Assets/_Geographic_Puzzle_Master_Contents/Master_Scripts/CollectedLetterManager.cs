@@ -9,7 +9,8 @@ public class CollectedLetterManager : MonoBehaviour
     [SerializeField] private string A; 
     [SerializeField] private GameObject canvas; 
     [SerializeField] private GameObject RockText;
-    [SerializeField] private GameObject AText; 
+    [SerializeField] private GameObject AText;
+    [SerializeField] private TextMeshProUGUI aTextMesh;  
     [SerializeField] public bool ALetter = true;
 
     private void Awake()
@@ -21,6 +22,16 @@ public class CollectedLetterManager : MonoBehaviour
         else if(AText.GetComponent<GameObject>() != null)
         {
             return; 
+        }
+
+        if (aTextMesh == null)
+        {
+            return;
+         
+        }
+        else if (aTextMesh.GetComponent<TextMeshProUGUI>() != null)
+        {
+            aTextMesh.GetComponent<TextMeshProUGUI>().text = "ALetter";
         }
     }
 
@@ -69,8 +80,13 @@ public class CollectedLetterManager : MonoBehaviour
             {
                 GameObject.Find("ArizonaText").GetComponent<TextMeshProUGUI>().enabled = true; 
                 print(AText);
+                if(aTextMesh != null)
+                {
+                    aTextMesh.GetComponent<TextMeshProUGUI>().text = "ALetter"; 
+                    aTextMesh.enabled = false;
+                }
             }
-           gameObject.SetActive(false);
+          // gameObject.SetActive(false);
         }
     }
 }

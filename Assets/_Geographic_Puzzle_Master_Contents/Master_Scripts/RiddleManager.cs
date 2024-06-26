@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro; 
 using UnityEngine;
 
 public class RiddleManager : MonoBehaviour
 {
     [SerializeField] private GameObject AText;
-    [SerializeField] private bool A = false;
-
+    [SerializeField] private TextMeshProUGUI aTextActive; 
+    [SerializeField] public static bool A;
+    
     private void Awake()
     {
         if(!A)
@@ -46,5 +48,23 @@ public class RiddleManager : MonoBehaviour
             AText = GameObject.Find(AText.activeInHierarchy.ToString());
             return; 
         }
+
+        if(aTextActive != null || AText.activeInHierarchy)
+        {
+            AText.gameObject.GetComponent<TextMeshProUGUI>();
+            aTextActive.text.Equals(true); 
+        }
+        else
+        {
+            if(aTextActive == null)
+            {
+                return; 
+            }
+        }
+    }
+
+    private void ALevelComplete()
+    {
+        print("A Level Completed"); 
     }
 }

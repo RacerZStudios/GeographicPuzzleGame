@@ -11,6 +11,7 @@ public class GeographicPuzzleFinish : MonoBehaviour
     [SerializeField] private GameObject CompletePuzzleA;
     [SerializeField] private GameObject letterAActive;
     [SerializeField] private CollectedLetterManager letterManager;
+    [SerializeField] private RiddleManager riddleManager;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -29,8 +30,9 @@ public class GeographicPuzzleFinish : MonoBehaviour
                 }          
             }
 
-            if (letterManager.ALetter == false)
+            if (letterAActive == null || letterManager.ALetter == false)
             {
+                riddleManager.SendMessage("ALevelComplete"); 
                 print(collision);
                 audioSource.clip = audioClip;
                 audioSource.PlayOneShot(audioSource.clip);
